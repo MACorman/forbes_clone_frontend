@@ -17,7 +17,9 @@ class AppContainer extends React.Component {
         return (
         <NavigationContainer>
             <Tabs.Navigator>
-            <Tabs.Screen name='Latest' component={Latest} />
+            <Tabs.Screen name='Latest'>
+                {props => <Latest {...props} showStoryDetails={this.props.showStoryDetails}/>}
+            </Tabs.Screen>
             <Tabs.Screen name='Magazine' component={Magazine} />
             <Tabs.Screen name='Video' component={Video} />
             </Tabs.Navigator>
