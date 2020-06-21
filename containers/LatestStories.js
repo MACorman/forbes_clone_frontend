@@ -23,7 +23,7 @@ class LatestStories extends React.Component {
                 <Text>Latest Stories</Text>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {this.state.articles.length > 0 && this.state.articles.map(article => {
-                            return <StoryCard article={article}/>
+                            return <StoryCard article={article} showStoryDetails={this.props.showStoryDetails}/>
                         
                         })}
                 </ScrollView>

@@ -23,7 +23,7 @@ class BreakingNews extends React.Component {
                 <Text>Breaking News</Text>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {this.state.articles.length > 0 && this.state.articles.map(article => {
-                        return <StoryCard article={article}/>
+                        return <StoryCard article={article} showStoryDetails={this.props.showStoryDetails}/>
                     
                     })}
 
