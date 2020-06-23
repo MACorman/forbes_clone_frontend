@@ -15,17 +15,22 @@ class BreakingNews extends React.Component {
         .then(data => {
             this.setState({articles: data.articles})
         })
+        .catch(function(error) {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+             // ADD THIS THROW error
+              throw error;
+            });
     }
 
     render() {
         return (
-            <View>
-                <Text>Breaking News</Text>
+            <View style={{ paddingTop: 20, paddingLeft: 15, backgroundColor: '#FCFCFC'}}>
+                <Text style={{fontFamily: 'Damascus', fontSize: 22, fontWeight: 'bold'}}>Breaking News</Text>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {this.state.articles.length > 0 && this.state.articles.map(article => {
+                    {this.state.articles ? this.state.articles.map(article => {
                         return <StoryCard article={article} showStoryDetails={this.props.showStoryDetails}/>
                     
-                    })}
+                    }) : <Text>Too many api calls</Text>}
 
                 </ScrollView>
                 
