@@ -2,7 +2,8 @@ import React from 'react'
 import {
     View,
     Text,
-    SafeAreaView
+    SafeAreaView,
+    ActivityIndicator
   } from 'react-native';
 import VideoCard from '../components/VideoCard'
 import { ScrollView } from 'react-native-gesture-handler';
@@ -16,9 +17,17 @@ class Video extends React.Component {
 
 
     componentDidMount() {
-        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=forbes&key=AIzaSyDLfcRlqeCLUJB0gj4oQbUkqti0zxj3bww`)
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=forbes_investigates&regionCode=US&key=[APIKEY]`)
         .then(resp => resp.json())
-        .then(data => this.setState({videos: data.items}))
+        .then(data => {
+            
+            this.setState({videos: data.items})
+        })
+        .catch(function(error) {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+             // ADD THIS THROW error
+              throw error;
+            });
 
     }
 
@@ -29,7 +38,7 @@ class Video extends React.Component {
                     <View> 
                         {this.state.videos.length > 0 ? this.state.videos.map(video => {
                             return <VideoCard {...video} />
-                        }) : <Text>Not working</Text>}
+                        }) : <ActivityIndicator size="large" color="#d3d3d3" style={{paddingTop: 30}}/>}
                     </View>
                 </ScrollView>
             </SafeAreaView>
