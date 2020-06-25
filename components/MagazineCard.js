@@ -1,33 +1,19 @@
-// import React from 'react'
-// import {View, Text, Image} from 'react-native'
-// import Carousel from 'react-native-snap-carousel';
+import React from 'react'
+import {View, Text, Image} from 'react-native'
 
-// class MagazineCard extends React.Component {
+class MagazineCard extends React.Component {
 
-
-//     renderItem = () => {
-//         return (
-//             <View>
-//                 <Image source={{uri: this.props.url}} style={{height: 200, width: 200}}/>
-//                 <Text>{this.props.date}</Text>
-//             </View>
-
-//         )
-//     }
-
-//     render() {
-//         return(
-//             <Carousel
-//             ref={'carousel'}
+    render() {
+        return(
+           <>
+            <Image source={{uri: this.props.url}} style={{width: 200,
+            height: 200}}/>
+            <Text>{this.props.date}</Text>
+           </>
             
-//             renderItem={this.renderItem}
-//             sliderWidth={1000}
-//             itemWidth={200}
-//           />
-            
-//         )
-//     }
-// }
+        )
+    }
+}
 
-// export default MagazineCard
+export default MagazineCard
 

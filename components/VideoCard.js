@@ -21,7 +21,7 @@ class VideoCard extends React.Component {
                     // onError={e => this.setState({ error: e.error })}
                     style={{ width: 200, height: 200 }}
                 />
-                <View style={{width: 250, backgroundColor: '#FCFCFC'}}>
+                <View style={{width: 250, backgroundColor: 'white'}}>
                     <View style={{flexDirection: 'row'}}>
                         <Text style={{width: 190, paddingTop: 15, paddingLeft: 15, fontSize: 20, fontFamily: 'Damascus', fontWeight: 'bold'}}>{this.props.snippet.title.toUpperCase().slice(0, 60) + '...'}</Text>
                         <FontAwesomeIcon icon={ faChevronRight } size={20} color='#d3d3d3' style={{top: 15}}/>

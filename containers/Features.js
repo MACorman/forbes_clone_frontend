@@ -23,7 +23,7 @@ class Features extends React.Component {
 
     render() {
         return (
-            <View style={{ paddingTop: 20, paddingLeft: 15, backgroundColor: '#FCFCFC'}}>
+            <View style={{ paddingTop: 20, paddingLeft: 15, backgroundColor: 'white'}}>
                 <Text style={{fontFamily: 'Damascus', fontSize: 22, fontWeight: 'bold'}}>Features</Text>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {this.state.articles ? this.state.articles.map(article => {

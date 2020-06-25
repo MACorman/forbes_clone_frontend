@@ -60,7 +60,9 @@ class AppContainer extends React.Component {
             <Tabs.Screen name='Latest'>
                 {props => <Latest {...props} showStoryDetails={this.props.showStoryDetails}/>}
             </Tabs.Screen>
-            <Tabs.Screen name='Magazine' component={Magazine} />
+            <Tabs.Screen name='Magazine'>
+              {props => <Magazine {...props} purchaseMagazine={this.props.purchaseMagazine} />}
+            </Tabs.Screen>
             <Tabs.Screen name='Video' component={Video} />
             </Tabs.Navigator>
         </NavigationContainer>
