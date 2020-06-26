@@ -4,11 +4,8 @@ import {
     Text,
     SafeAreaView,
     Image,
-    Button
   } from 'react-native';
-import covers from '../MagazineData'
-import MagazineCard from '../components/MagazineCard'
-import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import Carousel from 'react-native-snap-carousel'
 
 
@@ -18,7 +15,8 @@ class Magazine extends React.Component {
         data: [],
         activeIndex:0,
         magazine: {},
-        pressed: false
+        pressed: false,
+        currentUserMags: []
     }
     
     componentDidMount() {
@@ -27,6 +25,7 @@ class Magazine extends React.Component {
         .then(data => {
             this.setState({ data })
         })
+        // this.setState({currentUserMags: this.props.currentUser.magazines})
     }
     
     purchaseHandler = () => {
@@ -37,20 +36,29 @@ class Magazine extends React.Component {
         this.setState({pressed: true})
         this.props.purchaseMagazine(magazine)
     }
-    // props = this.props
+
+    // purchasedOrNot = () => {
+    //     let index = parseInt(this.state.activeIndex)
+    //     let magazines = this.state.data
+    //     let magazine = magazines[index]
+    //     let userMags = this.state.currentUserMags.map(mag => mag.url)
+
+    //     if(userMags.includes(magazine.url)){
+    //         return true
+
+    //     } else {
+    //         return false
+    //     }
+
+    // }
 
     renderItem({item,index}){
         
         return (
-          <View style={{
-            padding: 40,
-            marginLeft: 'auto',
-            marginRight: 'auto',}}>
-            <Image source={{uri: item.url}} style={{width: 300, height: 450}} /> 
+          <View style={{padding: 35, marginLeft: 'auto', marginRight: 'auto',}}>
+            <Image source={{uri: item.url}} style={{width: 350, height: 450}} /> 
             <Text style={{color: 'white', fontFamily: 'Damascus', paddingTop: 20, fontSize: 18}}>{item.date}</Text>
-            {/* <Button onPress={() => props.purchaseHandler(item)} title='Purchase Magazine'>Purchase Magazine</Button> */}
           </View>
-
         )
     }
 
@@ -63,23 +71,20 @@ class Magazine extends React.Component {
                         loop={true}
                         ref={ref => this.carousel = ref}
                         data={this.state.data}
-                        sliderWidth={300}
-                        itemWidth={300}
+                        sliderWidth={350}
+                        itemWidth={350}
                         renderItem={this.renderItem}
                         
                         onSnapToItem = { index => this.setState({activeIndex:index}) } 
-                    />
-                    
+                    />  
                 </View>
-                {this.state.pressed ? <Text style={{textAlign: 'center', fontSize: 20, paddingBottom: 15, paddingTop: 15, backgroundColor: 'white'}} >Purchased</Text> : <TouchableHighlight onPress={this.purchaseHandler}><Text style={{textAlign: 'center', paddingBottom: 15, paddingTop: 10, fontSize: 20, backgroundColor: 'white'}}>Purchase Content</Text></TouchableHighlight>}
-               
-                {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}> */}
-                
-                    {/* {this.state.data.map(magazine => {
-                        return <MagazineCard {...magazine} />
-                    })} */}
-                
-                {/* </ScrollView> */}
+                {
+                    this.state.pressed
+                ? 
+                    <Text style={{textAlign: 'center', fontSize: 20, paddingBottom: 15, paddingTop: 15, backgroundColor: 'white'}} >Purchased</Text> 
+                : 
+                    <TouchableHighlight onPress={this.purchaseHandler}><Text style={{textAlign: 'center', paddingBottom: 15, paddingTop: 10, fontSize: 20, backgroundColor: 'white'}}>Purchase Content</Text></TouchableHighlight>
+                }
             </SafeAreaView>
         )
     }
