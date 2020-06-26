@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text} from 'react-native'
 import StoryCard from '../components/StoryCard'
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -19,28 +19,27 @@ class BreakingNews extends React.Component {
             console.log('There has been a problem with your fetch operation: ' + error.message);
              // ADD THIS THROW error
               throw error;
-            });
+        });
     }
 
     render() {
         return (
-            <View style={{ paddingTop: 20, paddingLeft: 20, backgroundColor: 'white'}}>
+            <View style={{ paddingTop: 20, paddingLeft: 20}}>
                 <Text style={{fontFamily: 'Damascus', fontSize: 22, fontWeight: 'bold'}}>Breaking News</Text>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {this.state.articles ? this.state.articles.map(article => {
-                        return <StoryCard article={article} showStoryDetails={this.props.showStoryDetails}/>
-                    
-                    }) : <Text>Too many api calls</Text>}
-
-                </ScrollView>
-                
-
-                
-                
+                    {
+                        this.state.articles 
+                    ? 
+                        this.state.articles.map(article => {
+                            return <StoryCard article={article} showStoryDetails={this.props.showStoryDetails}/>
+                        }) 
+                    : 
+                        <Text>Too many api calls</Text>
+                    }
+                </ScrollView>   
             </View>
         )
     }
-
 }
 
 export default BreakingNews

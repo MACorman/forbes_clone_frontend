@@ -18,23 +18,27 @@ class MostPopular extends React.Component {
             console.log('There has been a problem with your fetch operation: ' + error.message);
              // ADD THIS THROW error
               throw error;
-            });
+        });
     }
 
     render() {
         return (
-            <View style={{ paddingTop: 20, paddingLeft: 15, backgroundColor: 'white'}}>
+            <View style={{ paddingTop: 20, paddingLeft: 15}}>
                 <Text style={{fontFamily: 'Damascus', fontSize: 22, fontWeight: 'bold'}}>Most Popular</Text>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {this.state.articles ? this.state.articles.map(article => {
+                    {
+                        this.state.articles 
+                    ? 
+                        this.state.articles.map(article => {
                             return <StoryCard article={article}showStoryDetails={this.props.showStoryDetails}/>
-                        
-                        }) : <Text>Too many api calls</Text>}
+                        }) 
+                    : 
+                        <Text>Too many api calls</Text>
+                    }
                 </ScrollView>
             </View>
         )
     }
-
 }
 
 export default MostPopular

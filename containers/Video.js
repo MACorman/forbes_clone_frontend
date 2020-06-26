@@ -1,7 +1,6 @@
 import React from 'react'
 import {
     View,
-    Text,
     SafeAreaView,
     ActivityIndicator
   } from 'react-native';
@@ -15,19 +14,17 @@ class Video extends React.Component {
         videos: []
     }
 
-
     componentDidMount() {
         fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=forbes_investigates&regionCode=US&key=[APIKEY]`)
         .then(resp => resp.json())
-        .then(data => {
-            
+        .then(data => {   
             this.setState({videos: data.items})
         })
         .catch(function(error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
              // ADD THIS THROW error
               throw error;
-            });
+        });
 
     }
 
@@ -36,9 +33,15 @@ class Video extends React.Component {
             <SafeAreaView>
                 <ScrollView>
                     <View> 
-                        {this.state.videos.length > 0 ? this.state.videos.map(video => {
-                            return <VideoCard {...video} />
-                        }) : <ActivityIndicator size="large" color="#d3d3d3" style={{paddingTop: 30}}/>}
+                        {
+                            this.state.videos.length > 0 
+                        ? 
+                            this.state.videos.map(video => {
+                                return <VideoCard {...video} />
+                            }) 
+                        : 
+                            <ActivityIndicator size="large" color="#d3d3d3" style={{paddingTop: 30}}/>
+                        }
                     </View>
                 </ScrollView>
             </SafeAreaView>

@@ -1,18 +1,15 @@
 import React from 'react'
 import {View, Text, Image} from 'react-native'
 
-class MagazineCard extends React.Component {
+function MagazineCard(props) {
 
-    render() {
-        return(
-           <>
-            <Image source={{uri: this.props.url}} style={{width: 200,
-            height: 200}}/>
-            <Text>{this.props.date}</Text>
-           </>
-            
-        )
-    }
+    return(
+        <View style={{marginLeft: 'auto', marginRight: 'auto', paddingTop: 30}}>
+            <Image source={{uri: props.url}} style={{width: 350, height: 450}}/>
+            <Text style={{fontFamily: 'Damascus', fontSize: 20, color: 'white', paddingTop: 10}}>{props.date}</Text>
+        </View>
+        
+    )
 }
 
 export default MagazineCard
