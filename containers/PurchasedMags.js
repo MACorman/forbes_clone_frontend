@@ -25,7 +25,7 @@ class PurchasedMags extends React.Component {
                 </View>
                 <View style={{backgroundColor: '#212424'}}>
                     <ScrollView>
-                        <View style={{height: 2500}}>
+                        <View style={{}}>
                             {
                                 this.state.usersMags.length 
                             ? 
