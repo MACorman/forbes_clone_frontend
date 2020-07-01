@@ -15,7 +15,7 @@ class Video extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=forbes_investigates&regionCode=US&key=AIzaSyBXYEXa4bjBQQ5-wHtVdOqul2ALBd1Kh-c`)
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=forbes_investigates&regionCode=US&key=[APIKEY]`)
         .then(resp => resp.json())
         .then(data => {   
             this.setState({videos: data.items})
